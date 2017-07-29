@@ -1,0 +1,12 @@
+<launch>
+  <master auto="start"/>
+  
+  <!-- Run the map server
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find car_2d_nav)/map/RMmap-2.yaml">
+  </node>
+   -->
+  
+  <!-- Run the rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find car_2d_nav)/single_robot.rviz" />
+  
+</launch>

@@ -1,0 +1,16 @@
+<launch>
+  <arg name="frequency"     default="5.0"/>
+  <arg name="close_enough"  default="0.2"/>
+  <arg name="goal_timeout"  default="60.0"/>
+  <arg name="robot_frame"  default="/base_footprint"/>
+  <arg name="world_frame"  default="/map"/>
+  
+  <node pkg="yocs_waypoints_navi" type="yocs_waypoints_navi_node" name="waypoints_navi">
+    <param name="frequency"    value="$(arg frequency)"/>
+    <param name="close_enough" value="$(arg close_enough)"/>
+    <param name="goal_timeout" value="$(arg goal_timeout)"/>
+    <param name="robot_frame" value="$(arg robot_frame)"/>
+    <param name="world_frame" value="$(arg world_frame)"/>
+  </node>
+</launch>
+

@@ -1,0 +1,42 @@
+<launch>
+  <master auto="start"/>
+  
+  <!-- Run the rplidar -->
+  <node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen">
+  <param name="serial_port"         type="string" value="/dev/ttyUSB1"/>  
+  <param name="serial_baudrate"     type="int"    value="115200"/>
+  <param name="frame_id"            type="string" value="laser"/>
+  <param name="inverted"            type="bool"   value="false"/>
+  <param name="angle_compensate"    type="bool"   value="true"/>
+  </node>
+
+  <!-- Run the jetbot -->
+  <include file="$(find jetbot)/launch/jetbot.launch"/>
+  
+  <!-- Run the jetbot_dbus_pub -->
+  <include file="$(find jetbot)/launch/jetbot_dbus_pub.launch"/>
+  
+  <!-- Run the jetbot_vel_repub -->
+  <include file="$(find jetbot)/launch/jetbot_vel_repub.launch"/>
+   
+  
+  <!-- Run tf -->
+  <include file="$(find tf_tree)/launch/tf.launch"/>
+
+  <!-- Run the map server -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find car_2d_nav)/map/map.yaml">
+  </node>
+ 
+  <!-- Run the amcl location -->
+  <include file="$(find amcl)/examples/amcl_omni.launch"/>
+
+  <!-- Configure the move_base pack -->
+  <include file="$(find car_2d_nav)/move_base_config/move_base.xml"/>
+  
+  <!-- Run the velocity smoother -->
+  <include file="$(find car_2d_nav)/launch/velocity_smoother.launch"/>
+  
+  <!-- Run the rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find car_2d_nav)/single_robot.rviz" />
+  
+</launch>

@@ -1,0 +1,9 @@
+<launch>
+
+  <!-- Run the navigation -->
+  <include file="$(find car_2d_nav)/launch/nav.launch"/>
+
+  <!-- Run the way points -->
+  <include file="$(find car_2d_nav)/launch/way_points.launch"/>
+  
+</launch>

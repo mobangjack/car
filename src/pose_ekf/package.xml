@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package>
+  <name>pose_ekf</name>
+  <version>1.0.0</version>
+  <description>The jetbot pose_ekf package</description>
+
+  <maintainer email="mobangjack@foxmail.com">Jack Mo</maintainer>
+
+  <license>Apache 2.0</license>
+
+  <url type="website">http://www.whukylin.com</url>
+
+  <author email="mobangjack@foxmail.com">Jack Mo</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+</package>
